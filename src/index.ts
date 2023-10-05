@@ -160,6 +160,10 @@ const main = async () => {
 	await apolloServer.start();
 	apolloServer.applyMiddleware({ app, cors: false });
 
+	app.use('/', (_req, res) => {
+		res.send('Hey there, you might want to navigate to /graphql');
+	});
+
 	// error handlers
 	app.use('*', (_req, _res, next) => {
 		next(new Error('Not Found!'));
